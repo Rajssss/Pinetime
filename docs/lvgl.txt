@@ -1673,7 +1673,7 @@ Code[907]:
  - func[637] size=323 <Pinetime::Applications::Screens::BatteryIcon::GetBatteryIcon(float)>
  - func[638] size=113 <Pinetime::Applications::Screens::BatteryIcon::GetPlugIcon(bool)>
  - func[639] size=113 <Pinetime::Applications::Screens::BleIcon::GetIcon(bool)>
- - func[640] size=2429 <Pinetime::Applications::Screens::Clock::Clock(DisplayApp*, Pinetime::Controllers::DateTime&, Pinetime::Controllers::Battery&, Pinetime::Controllers::Ble&)>
+ - func[640] size=2252 <Pinetime::Applications::Screens::Clock::Clock(DisplayApp*, Pinetime::Controllers::DateTime&, Pinetime::Controllers::Battery&, Pinetime::Controllers::Ble&)>
  - func[641] size=137 <event_handler(_lv_obj_t*, unsigned char)>
  - func[642] size=78 <Pinetime::Applications::Screens::DirtyValue<unsigned char>::DirtyValue(unsigned char)>
  - func[643] size=99 <Pinetime::Applications::Screens::DirtyValue<bool>::DirtyValue(bool)>
@@ -2394,31 +2394,31 @@ Data[3]:
   - 0001fa0: 703d 2564 2c20 7269 6768 743d 2564 2c20  p=%d, right=%d, 
   - 0001fb0: 626f 7474 6f6d 3d25 642e 2e2e 0a00 ef89  bottom=%d.......
   - 0001fc0: 8000 ef89 8100 ef89 8200 ef89 8300 ef89  ................
-  - 0001fd0: 8400 ef87 a600 00ef 8a94 0000 ef89 8000  ................
-  - 0001fe0: ef87 a600 ef8a 9400 00ef 889e 0030 0042  .............0.B
-  - 0001ff0: 504d 00ef 958b 0025 3032 6400 2563 2563  PM.....%02d.%c%c
-  - 0002000: 3a25 6325 6300 2573 2025 6420 2573 2025  :%c%c.%s %d %s %
-  - 0002010: 6400 2564 0025 6c75 004d 4f4e 4441 5900  d.%d.%lu.MONDAY.
-  - 0002020: 5455 4553 4441 5900 5745 444e 4553 4441  TUESDAY.WEDNESDA
-  - 0002030: 5900 5448 5552 5344 4159 0046 5249 4441  Y.THURSDAY.FRIDA
-  - 0002040: 5900 5341 5455 5244 4159 0053 554e 4441  Y.SATURDAY.SUNDA
-  - 0002050: 5900 4a41 4e00 4645 4200 4d41 5200 4150  Y.JAN.FEB.MAR.AP
-  - 0002060: 5200 4d41 5900 4a55 4e00 4a55 4c00 4155  R.MAY.JUN.JUL.AU
-  - 0002070: 4700 5345 5000 4f43 5400 4e4f 5600 4445  G.SEP.OCT.NOV.DE
-  - 0002080: 4300 0249 6e20 432b 2b3a 2043 7265 6174  C..In C++: Creat
-  - 0002090: 696e 6720 636c 6f63 6b2e 2e2e 004c 6162  ing clock....Lab
-  - 00020a0: 656c 4269 6753 7479 6c65 2021 3d20 6e75  elBigStyle != nu
-  - 00020b0: 6c6c 7074 7200 636c 6f63 6b2f 436c 6f63  llptr.clock/Cloc
-  - 00020c0: 6b48 656c 7065 722e 6370 7000 6372 6561  kHelper.cpp.crea
-  - 00020d0: 7465 5f63 6c6f 636b 0049 6e20 432b 2b3a  te_clock.In C++:
-  - 00020e0: 2052 6566 7265 7368 696e 6720 636c 6f63   Refreshing cloc
-  - 00020f0: 6b2e 2e2e 0063 6c6f 636b 3020 213d 206e  k....clock0 != n
-  - 0002100: 756c 6c70 7472 0072 6566 7265 7368 5f63  ullptr.refresh_c
-  - 0002110: 6c6f 636b 0049 6e20 432b 2b3a 2055 7064  lock.In C++: Upd
-  - 0002120: 6174 696e 6720 636c 6f63 6b2e 2e2e 0064  ating clock....d
-  - 0002130: 6174 6554 696d 6543 6f6e 7472 6f6c 6c65  ateTimeControlle
-  - 0002140: 7230 2021 3d20 6e75 6c6c 7074 7200 7570  r0 != nullptr.up
-  - 0002150: 6461 7465 5f63 6c6f 636b 0000 0000 0000  date_clock......
+  - 0001fd0: 8400 ef87 a600 00ef 8a94 0000 ef87 a600  ................
+  - 0001fe0: ef8a 9400 00ef 889e 0030 0042 504d 00ef  .........0.BPM..
+  - 0001ff0: 958b 0025 3032 6400 2563 2563 3a25 6325  ...%02d.%c%c:%c%
+  - 0002000: 6300 2573 2025 6420 2573 2025 6400 2564  c.%s %d %s %d.%d
+  - 0002010: 0025 6c75 004d 4f4e 4441 5900 5455 4553  .%lu.MONDAY.TUES
+  - 0002020: 4441 5900 5745 444e 4553 4441 5900 5448  DAY.WEDNESDAY.TH
+  - 0002030: 5552 5344 4159 0046 5249 4441 5900 5341  URSDAY.FRIDAY.SA
+  - 0002040: 5455 5244 4159 0053 554e 4441 5900 4a41  TURDAY.SUNDAY.JA
+  - 0002050: 4e00 4645 4200 4d41 5200 4150 5200 4d41  N.FEB.MAR.APR.MA
+  - 0002060: 5900 4a55 4e00 4a55 4c00 4155 4700 5345  Y.JUN.JUL.AUG.SE
+  - 0002070: 5000 4f43 5400 4e4f 5600 4445 4300 0249  P.OCT.NOV.DEC..I
+  - 0002080: 6e20 432b 2b3a 2043 7265 6174 696e 6720  n C++: Creating 
+  - 0002090: 636c 6f63 6b2e 2e2e 004c 6162 656c 4269  clock....LabelBi
+  - 00020a0: 6753 7479 6c65 2021 3d20 6e75 6c6c 7074  gStyle != nullpt
+  - 00020b0: 7200 636c 6f63 6b2f 436c 6f63 6b48 656c  r.clock/ClockHel
+  - 00020c0: 7065 722e 6370 7000 6372 6561 7465 5f63  per.cpp.create_c
+  - 00020d0: 6c6f 636b 0049 6e20 432b 2b3a 2052 6566  lock.In C++: Ref
+  - 00020e0: 7265 7368 696e 6720 636c 6f63 6b2e 2e2e  reshing clock...
+  - 00020f0: 0063 6c6f 636b 3020 213d 206e 756c 6c70  .clock0 != nullp
+  - 0002100: 7472 0072 6566 7265 7368 5f63 6c6f 636b  tr.refresh_clock
+  - 0002110: 0049 6e20 432b 2b3a 2055 7064 6174 696e  .In C++: Updatin
+  - 0002120: 6720 636c 6f63 6b2e 2e2e 0064 6174 6554  g clock....dateT
+  - 0002130: 696d 6543 6f6e 7472 6f6c 6c65 7230 2021  imeController0 !
+  - 0002140: 3d20 6e75 6c6c 7074 7200 7570 6461 7465  = nullptr.update
+  - 0002150: 5f63 6c6f 636b 0000 0000 0000 0000 0000  _clock..........
   - 0002160: 00ff ffff e00f c0ef dfbf 7efd c008 c310  ..........~.....
   - 0002170: 623f f7fe 2304 6188 311f fbff 1982 30c4  b?..#.a.1.....0.
   - 0002180: 0008 0201 c1fe ebf2 7c83 a07c 0fc0 f827  ........|..|...'
@@ -2868,12 +2868,12 @@ Data[3]:
   - 0003d30: 1900 0000 1a00 0000 0000 0000 0000 0000  ................
   - 0003d40: 2616 0000 2c16 0000 3116 0000 3616 0000  &...,...1...6...
   - 0003d50: 3c16 0000 0000 0000 0000 0000 0000 0000  <...............
-  - 0003d60: e81f 0000 1920 0000 2020 0000 2820 0000  ..... ..  ..( ..
-  - 0003d70: 3220 0000 3b20 0000 4220 0000 4b20 0000  2 ..; ..B ..K ..
-  - 0003d80: e81f 0000 5220 0000 5620 0000 5a20 0000  ....R ..V ..Z ..
-  - 0003d90: 5e20 0000 6220 0000 6620 0000 6a20 0000  ^ ..b ..f ..j ..
-  - 0003da0: 6e20 0000 7220 0000 7620 0000 7a20 0000  n ..r ..v ..z ..
-  - 0003db0: 7e20 0000 2800 0000 2900 0000 1500 0300  ~ ..(...).......
+  - 0003d60: e41f 0000 1520 0000 1c20 0000 2420 0000  ..... ... ..$ ..
+  - 0003d70: 2e20 0000 3720 0000 3e20 0000 4720 0000  . ..7 ..> ..G ..
+  - 0003d80: e41f 0000 4e20 0000 5220 0000 5620 0000  ....N ..R ..V ..
+  - 0003d90: 5a20 0000 5e20 0000 6220 0000 6620 0000  Z ..^ ..b ..f ..
+  - 0003da0: 6a20 0000 6e20 0000 7220 0000 7620 0000  j ..n ..r ..v ..
+  - 0003db0: 7a20 0000 2800 0000 2900 0000 1500 0300  z ..(...).......
   - 0003dc0: 0000 0000 cc3d 0000 0000 0000 6021 0000  .....=......`!..
   - 0003dd0: 7029 0000 4029 0000 0000 0000 0000 0204  p)..@)..........
   - 0003de0: 0000 0000 0000 0000 0000 0000 2800 0000  ............(...

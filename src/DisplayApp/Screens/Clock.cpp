@@ -28,9 +28,9 @@ Clock::Clock(DisplayApp* app,
   displayedChar[3] = 0;
   displayedChar[4] = 0;
 
-  /*batteryIcon = lv_label_create(lv_scr_act(), NULL);
+  batteryIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
-  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, 0, 0);*/
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, 0, 0);
 
   batteryPlug = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(batteryPlug, Symbols::plug);
@@ -42,12 +42,11 @@ Clock::Clock(DisplayApp* app,
 
 
   label_date = lv_label_create(lv_scr_act(), NULL);
-
-  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_LEFT_MID, 0, 60);
+  lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_LEFT_MID, 0, 80);
 
   label_time = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_style(label_time, LV_LABEL_STYLE_MAIN, LabelBigStyle);
-  lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_LEFT_MID, 0, 0);
+  lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 50);
 
   backgroundLabel = lv_label_create(lv_scr_act(), NULL);
   backgroundLabel->user_data = this;
@@ -67,9 +66,9 @@ Clock::Clock(DisplayApp* app,
   lv_label_set_text(heartbeatValue, "0");
   lv_obj_align(heartbeatValue, heartbeatIcon, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
 
-  heartbeatBpm = lv_label_create(lv_scr_act(), NULL);
+  /*heartbeatBpm = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heartbeatBpm, "BPM");
-  lv_obj_align(heartbeatBpm, heartbeatValue, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
+  lv_obj_align(heartbeatBpm, heartbeatValue, LV_ALIGN_OUT_RIGHT_MID, 5, 0);*/
 
   stepValue = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(stepValue, "0");
@@ -88,7 +87,7 @@ bool Clock::Refresh() {
   batteryPercentRemaining = batteryController.PercentRemaining();
   if (batteryPercentRemaining.IsUpdated()) {
     auto batteryPercent = batteryPercentRemaining.Get();
-    /*lv_label_set_text(batteryIcon, BatteryIcon::GetBatteryIcon(batteryPercent));*/
+    lv_label_set_text(batteryIcon, BatteryIcon::GetBatteryIcon(batteryPercent));
     auto isCharging = batteryController.IsCharging() || batteryController.IsPowerPresent();
     lv_label_set_text(batteryPlug, BatteryIcon::GetPlugIcon(isCharging));
   }
@@ -101,9 +100,9 @@ bool Clock::Refresh() {
       lv_label_set_text(bleIcon, BleIcon::GetIcon(false));
     }
   }
-  /*lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -5, 5);
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -50, 50);
   lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
-  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);*/
+  lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
   currentDateTime = dateTimeController.CurrentDateTime();
 
@@ -130,7 +129,7 @@ bool Clock::Refresh() {
     sprintf(hoursChar, "%02d", hour);
 
     char timeStr[6];
-    sprintf(timeStr, "%c%c:%c%c", hoursChar[0],hoursChar[1],minutesChar[0], minutesChar[1]);
+    sprintf(timeStr, "%c%c\n%c%c", hoursChar[0],hoursChar[1],minutesChar[0], minutesChar[1]);
 
     if(hoursChar[0] != displayedChar[0] || hoursChar[1] != displayedChar[1] || minutesChar[0] != displayedChar[2] || minutesChar[1] != displayedChar[3]) {
       displayedChar[0] = hoursChar[0];
@@ -159,9 +158,9 @@ bool Clock::Refresh() {
     char heartbeatBuffer[4];
     sprintf(heartbeatBuffer, "%d", heartbeat.Get());
     lv_label_set_text(heartbeatValue, heartbeatBuffer);
-    lv_obj_align(heartbeatIcon, lv_scr_act(), LV_ALIGN_IN_BOTTOM_LEFT, 5, -2);
+    lv_obj_align(heartbeatIcon, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -100, -15);
     lv_obj_align(heartbeatValue, heartbeatIcon, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
-    lv_obj_align(heartbeatBpm, heartbeatValue, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
+    //lv_obj_align(heartbeatBpm, heartbeatValue, LV_ALIGN_OUT_RIGHT_MID, 5, 0);
   }
 
   // TODO stepCount = stepController.GetValue();
@@ -169,7 +168,7 @@ bool Clock::Refresh() {
     char stepBuffer[5];
     sprintf(stepBuffer, "%lu", stepCount.Get());
     lv_label_set_text(stepValue, stepBuffer);
-    lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_BOTTOM_RIGHT, -5, -2);
+    lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -30, -15);
     lv_obj_align(stepIcon, stepValue, LV_ALIGN_OUT_LEFT_MID, -5, 0);
   }
 

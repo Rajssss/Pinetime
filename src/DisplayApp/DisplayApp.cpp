@@ -19,6 +19,8 @@
 #include <DisplayApp/Screens/FirmwareUpdate.h>
 #include "../SystemTask/SystemTask.h"
 
+#define PT_NOSLEEP
+
 using namespace Pinetime::Applications;
 
 DisplayApp::DisplayApp(Drivers::St7789 &lcd, Components::LittleVgl &lvgl, Drivers::Cst816S &touchPanel,
@@ -85,6 +87,7 @@ void DisplayApp::Refresh() {
   if (xQueueReceive(msgQueue, &msg, queueTimeout)) {
     switch (msg) {
       case Messages::GoToSleep:
+#ifndef PT_NOSLEEP
         brightnessController.Backup();
         while(brightnessController.Level() != Controllers::BrightnessController::Levels::Off) {
           brightnessController.Lower();
@@ -94,6 +97,7 @@ void DisplayApp::Refresh() {
         lcd.Sleep();
         touchPanel.Sleep();
         state = States::Idle;
+#endif
         break;
       case Messages::GoToRunning:
         lcd.Wakeup();

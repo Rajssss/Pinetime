@@ -48,14 +48,14 @@ Clock::Clock(DisplayApp* app,
   lv_label_set_style(label_time, LV_LABEL_STYLE_MAIN, LabelBigStyle);
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 50);
 
-  backgroundLabel = lv_label_create(lv_scr_act(), NULL);
+  /*backgroundLabel = lv_label_create(lv_scr_act(), NULL);
   backgroundLabel->user_data = this;
   lv_obj_set_click(backgroundLabel, true);
   lv_obj_set_event_cb(backgroundLabel, event_handler);
   lv_label_set_long_mode(backgroundLabel, LV_LABEL_LONG_CROP);
   lv_obj_set_size(backgroundLabel, 240, 240);
   lv_obj_set_pos(backgroundLabel, 0, 0);
-  lv_label_set_text(backgroundLabel, "");
+  lv_label_set_text(backgroundLabel, "");*/
 
 
   heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
@@ -100,7 +100,7 @@ bool Clock::Refresh() {
       lv_label_set_text(bleIcon, BleIcon::GetIcon(false));
     }
   }
-  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -50, 50);
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -15, 50);
   lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
   lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
@@ -168,7 +168,7 @@ bool Clock::Refresh() {
     char stepBuffer[5];
     sprintf(stepBuffer, "%lu", stepCount.Get());
     lv_label_set_text(stepValue, stepBuffer);
-    lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -30, -15);
+    lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -15, -15);
     lv_obj_align(stepIcon, stepValue, LV_ALIGN_OUT_LEFT_MID, -5, 0);
   }
 
@@ -211,12 +211,12 @@ char const *Clock::MonthsString[] = {
 };
 
 void Clock::OnObjectEvent(lv_obj_t *obj, lv_event_t event) {
-  if(obj == backgroundLabel) {
+  /*if(obj == backgroundLabel) {
     if (event == LV_EVENT_CLICKED) {
 
       running = false;
     }
-  }
+  }*/
 }
 
 bool Clock::OnButtonPushed() {

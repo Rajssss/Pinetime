@@ -29,6 +29,16 @@ Clock::Clock(DisplayApp* app,
   displayedChar[3] = 0;
   displayedChar[4] = 0;
 
+    bg_wall.header.always_zero = 0;
+    bg_wall.header.w = 240;
+    bg_wall.header.h = 240;
+    bg_wall.data_size = 240 * 240 * (LV_COLOR_SIZE / 8);
+    bg_wall.header.cf = LV_IMG_CF_TRUE_COLOR;
+    bg_wall.data = bg_wall_map;
+    lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
+    lv_img_set_src(img_src, &bg_wall);
+    lv_obj_set_pos(img_src, 0, 0);
+
   batteryIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
   lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, 0, 0);
@@ -45,8 +55,17 @@ Clock::Clock(DisplayApp* app,
   label_date = lv_label_create(lv_scr_act(), NULL);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_IN_LEFT_MID, 0, 80);
 
-  label_time = lv_label_create(lv_scr_act(), NULL);
+  /*label_time = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_style(label_time, LV_LABEL_STYLE_MAIN, LabelBigStyle);
+  lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 50);*/
+
+  //custom style
+  label_time = lv_label_create(lv_scr_act(), NULL);
+  static lv_style_t style_lable_time;
+  lv_style_copy(&style_lable_time, &lv_style_plain_color);
+  style_lable_time.text.color = LV_COLOR_MAKE(0xFF, 0x00, 0x00);
+  style_lable_time.text.font = &jetbrains_mono_extrabold_compressed;
+  lv_label_set_style(label_time, LV_LABEL_STYLE_MAIN, &style_lable_time);
   lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 50);
 
   /*backgroundLabel = lv_label_create(lv_scr_act(), NULL);
@@ -57,17 +76,6 @@ Clock::Clock(DisplayApp* app,
   lv_obj_set_size(backgroundLabel, 240, 240);
   lv_obj_set_pos(backgroundLabel, 0, 0);
   lv_label_set_text(backgroundLabel, "");*/
-
-    bg_wall.header.always_zero = 0;
-    bg_wall.header.w = 240;
-    bg_wall.header.h = 240;
-    bg_wall.data_size = 240 * 240 * LV_COLOR_SIZE / 8;
-    bg_wall.header.cf = LV_IMG_CF_TRUE_COLOR;
-    bg_wall.data = bg_wall_map;
-    lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
-    lv_img_set_src(img_src, &bg_wall);
-    lv_obj_set_pos(img_src, 0, 0);
-
 
     heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heartbeatIcon, Symbols::heartBeat);

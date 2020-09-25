@@ -7,6 +7,7 @@
 #include "BatteryIcon.h"
 #include "BleIcon.h"
 #include "Symbols.h"
+#include "../Background/background.h"
 using namespace Pinetime::Applications::Screens;
 extern lv_font_t jetbrains_mono_extrabold_compressed;
 extern lv_font_t jetbrains_mono_bold_20;
@@ -57,8 +58,18 @@ Clock::Clock(DisplayApp* app,
   lv_obj_set_pos(backgroundLabel, 0, 0);
   lv_label_set_text(backgroundLabel, "");*/
 
+    bg_wall.header.always_zero = 0;
+    bg_wall.header.w = 240;
+    bg_wall.header.h = 240;
+    bg_wall.data_size = 240 * 240 * LV_COLOR_SIZE / 8;
+    bg_wall.header.cf = LV_IMG_CF_TRUE_COLOR;
+    bg_wall.data = bg_wall_map;
+    lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
+    lv_img_set_src(img_src, &bg_wall);
+    lv_obj_set_pos(img_src, 0, 0);
 
-  heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
+
+    heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heartbeatIcon, Symbols::heartBeat);
   lv_obj_align(heartbeatIcon, lv_scr_act(), LV_ALIGN_IN_BOTTOM_LEFT, 5, -2);
 

@@ -41,6 +41,10 @@ if(DEFINED USE_DEBUG_PINS AND USE_DEBUG_PINS)
   add_definitions(-DUSE_DEBUG_PINS)
 endif()
 
+if(PT_NOSLEEP)
+  add_definitions(-DPT_NOSLEEP)
+endif()
+
 message("BUILD CONFIGURATION")
 message("-------------------")
 message("    * Version : " ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})

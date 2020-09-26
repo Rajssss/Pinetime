@@ -19,7 +19,6 @@
 #include <DisplayApp/Screens/FirmwareUpdate.h>
 #include "../SystemTask/SystemTask.h"
 
-#define PT_NOSLEEP
 
 using namespace Pinetime::Applications;
 

@@ -11,7 +11,6 @@
 using namespace Pinetime::Applications::Screens;
 extern lv_font_t jetbrains_mono_extrabold_compressed;
 extern lv_font_t jetbrains_mono_bold_20;
-extern lv_style_t* LabelBigStyle;
 
 static void event_handler(lv_obj_t * obj, lv_event_t event) {
   Clock* screen = static_cast<Clock *>(obj->user_data);
@@ -63,10 +62,13 @@ Clock::Clock(DisplayApp* app,
   label_time = lv_label_create(lv_scr_act(), NULL);
   static lv_style_t style_lable_time;
   lv_style_copy(&style_lable_time, &lv_style_plain_color);
-  style_lable_time.text.color = LV_COLOR_MAKE(0xFF, 0x00, 0x00);
+  style_lable_time.text.color = LV_COLOR_MAKE(0xFF, 0xFF, 0x99);
   style_lable_time.text.font = &jetbrains_mono_extrabold_compressed;
+  style_lable_time.text.line_space = 20;
+  style_lable_time.text.letter_space  = 5;
   lv_label_set_style(label_time, LV_LABEL_STYLE_MAIN, &style_lable_time);
-  lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 50);
+  lv_label_set_recolor(label_time, true);
+  lv_obj_align(label_time, lv_scr_act(), LV_ALIGN_IN_TOP_LEFT, 5, 30);
 
   /*backgroundLabel = lv_label_create(lv_scr_act(), NULL);
   backgroundLabel->user_data = this;
@@ -119,7 +121,7 @@ bool Clock::Refresh() {
       lv_label_set_text(bleIcon, BleIcon::GetIcon(false));
     }
   }
-  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -15, 50);
+  lv_obj_align(batteryIcon, lv_scr_act(), LV_ALIGN_IN_TOP_RIGHT, -15, 30);
   lv_obj_align(batteryPlug, batteryIcon, LV_ALIGN_OUT_LEFT_MID, -5, 0);
   lv_obj_align(bleIcon, batteryPlug, LV_ALIGN_OUT_LEFT_MID, -5, 0);
 
@@ -150,7 +152,15 @@ bool Clock::Refresh() {
     char timeStr[6];
     sprintf(timeStr, "%c%c\n%c%c", hoursChar[0],hoursChar[1],minutesChar[0], minutesChar[1]);
 
-    if(hoursChar[0] != displayedChar[0] || hoursChar[1] != displayedChar[1] || minutesChar[0] != displayedChar[2] || minutesChar[1] != displayedChar[3]) {
+    //Recolor
+    char darkGolden[11];
+    sprintf(darkGolden, "#FFFF00 %c%c#", hoursChar[0],hoursChar[1]);
+
+    //char lightGreen[12];
+    //sprintf(lightGreen, "#B3FF66 %lu#", stepCount.Get());
+
+
+      if(hoursChar[0] != displayedChar[0] || hoursChar[1] != displayedChar[1] || minutesChar[0] != displayedChar[2] || minutesChar[1] != displayedChar[3]) {
       displayedChar[0] = hoursChar[0];
       displayedChar[1] = hoursChar[1];
       displayedChar[2] = minutesChar[0];
@@ -186,8 +196,11 @@ bool Clock::Refresh() {
   if(stepCount.IsUpdated()) {
     char stepBuffer[5];
     sprintf(stepBuffer, "%lu", stepCount.Get());
+    //char stepBuffer[14];
+    //sprintf(stepBuffer, "#B3FF66 %lu#", stepCount.Get());
     lv_label_set_text(stepValue, stepBuffer);
     lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -15, -15);
+    lv_label_set_recolor(stepValue, true);
     lv_obj_align(stepIcon, stepValue, LV_ALIGN_OUT_LEFT_MID, -5, 0);
   }
 

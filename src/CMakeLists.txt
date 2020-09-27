@@ -318,7 +318,7 @@ list(APPEND IMAGE_FILES
   DisplayApp/Icons/bluetooth/os_bt_connected.c
   DisplayApp/Icons/bluetooth/os_bt_disconnected.c
 
-  #DisplayApp/Background/background.c
+  DisplayApp/Background/background.c
   )
 
 list(APPEND SOURCE_FILES
@@ -563,7 +563,7 @@ endif()
 # Build autonomous binary (without support for bootloader)
 set(EXECUTABLE_NAME "pinetime-app")
 set(NRF5_LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/gcc_nrf52.ld")
-add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES} DisplayApp/Background/background.h DisplayApp/Background/background.h)
+add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES} DisplayApp/Background/background.c DisplayApp/Background/background.c)
 target_compile_options(${EXECUTABLE_NAME} PUBLIC
         $<$<AND:$<COMPILE_LANGUAGE:C>,$<CONFIG:DEBUG>>: ${COMMON_FLAGS} -O0 -g3>
         $<$<AND:$<COMPILE_LANGUAGE:C>,$<CONFIG:RELEASE>>: ${COMMON_FLAGS} -O3>

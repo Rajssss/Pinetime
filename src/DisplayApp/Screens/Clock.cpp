@@ -7,18 +7,16 @@
 #include "BatteryIcon.h"
 #include "BleIcon.h"
 #include "Symbols.h"
-#include "../Background/background2.h"
+
 using namespace Pinetime::Applications::Screens;
 extern lv_font_t jetbrains_mono_extrabold_compressed;
 extern lv_font_t jetbrains_mono_bold_20;
+extern lv_img_dsc_t bgwallStars;            //background image
 
 static void event_handler(lv_obj_t * obj, lv_event_t event) {
   Clock* screen = static_cast<Clock *>(obj->user_data);
   screen->OnObjectEvent(obj, event);
 }
-
-//must be in global scope
-static lv_img_dsc_t bgwallStars;
 
 Clock::Clock(DisplayApp* app,
         Controllers::DateTime& dateTimeController,
@@ -31,15 +29,10 @@ Clock::Clock(DisplayApp* app,
   displayedChar[3] = 0;
   displayedChar[4] = 0;
 
-  bgwallStars.header.always_zero = 0;
-  bgwallStars.header.w = 235;
-  bgwallStars.header.h = 235;
-  bgwallStars.data_size = 235 * 235 * LV_COLOR_SIZE / 8;
-  bgwallStars.header.cf = LV_IMG_CF_TRUE_COLOR;
-  bgwallStars.data = bgwallStars_map;
+  //Stars background
   lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
   lv_img_set_src(img_src, &bgwallStars);
-  lv_obj_set_pos(img_src, 0, 0);
+  lv_obj_set_pos(img_src, 2, 2);
 
   batteryIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);
@@ -82,7 +75,7 @@ Clock::Clock(DisplayApp* app,
   lv_obj_set_pos(backgroundLabel, 0, 0);
   lv_label_set_text(backgroundLabel, "");*/
 
-    heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
+  heartbeatIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(heartbeatIcon, Symbols::heartBeat);
   lv_obj_align(heartbeatIcon, lv_scr_act(), LV_ALIGN_IN_BOTTOM_LEFT, 5, -2);
 

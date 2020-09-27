@@ -17,6 +17,9 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
   screen->OnObjectEvent(obj, event);
 }
 
+//must be in global scope
+static lv_img_dsc_t bgwallStars;
+
 Clock::Clock(DisplayApp* app,
         Controllers::DateTime& dateTimeController,
         Controllers::Battery& batteryController,
@@ -28,11 +31,10 @@ Clock::Clock(DisplayApp* app,
   displayedChar[3] = 0;
   displayedChar[4] = 0;
 
-  lv_img_dsc_t bgwallStars;
   bgwallStars.header.always_zero = 0;
-  bgwallStars.header.w = 240;
-  bgwallStars.header.h = 240;
-  bgwallStars.data_size = 240* 240 * LV_COLOR_SIZE / 8;
+  bgwallStars.header.w = 235;
+  bgwallStars.header.h = 235;
+  bgwallStars.data_size = 235 * 235 * LV_COLOR_SIZE / 8;
   bgwallStars.header.cf = LV_IMG_CF_TRUE_COLOR;
   bgwallStars.data = bgwallStars_map;
   lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);

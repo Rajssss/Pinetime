@@ -317,6 +317,8 @@ list(APPEND IMAGE_FILES
 
   DisplayApp/Icons/bluetooth/os_bt_connected.c
   DisplayApp/Icons/bluetooth/os_bt_disconnected.c
+
+  #DisplayApp/Background/background.c
   )
 
 list(APPEND SOURCE_FILES

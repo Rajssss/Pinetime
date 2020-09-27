@@ -7,7 +7,7 @@
 #include "BatteryIcon.h"
 #include "BleIcon.h"
 #include "Symbols.h"
-#include "../Background/background.h"
+#include "../Background/background2.h"
 using namespace Pinetime::Applications::Screens;
 extern lv_font_t jetbrains_mono_extrabold_compressed;
 extern lv_font_t jetbrains_mono_bold_20;
@@ -28,15 +28,16 @@ Clock::Clock(DisplayApp* app,
   displayedChar[3] = 0;
   displayedChar[4] = 0;
 
-    bg_wall.header.always_zero = 0;
-    bg_wall.header.w = 240;
-    bg_wall.header.h = 240;
-    bg_wall.data_size = 240 * 240 * (LV_COLOR_SIZE / 8);
-    bg_wall.header.cf = LV_IMG_CF_TRUE_COLOR;
-    bg_wall.data = bg_wall_map;
-    lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
-    lv_img_set_src(img_src, &bg_wall);
-    lv_obj_set_pos(img_src, 0, 0);
+  lv_img_dsc_t bgwallStars;
+  bgwallStars.header.always_zero = 0;
+  bgwallStars.header.w = 240;
+  bgwallStars.header.h = 240;
+  bgwallStars.data_size = 240* 240 * LV_COLOR_SIZE / 8;
+  bgwallStars.header.cf = LV_IMG_CF_TRUE_COLOR;
+  bgwallStars.data = bgwallStars_map;
+  lv_obj_t *img_src = lv_img_create(lv_scr_act(), NULL);
+  lv_img_set_src(img_src, &bgwallStars);
+  lv_obj_set_pos(img_src, 0, 0);
 
   batteryIcon = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_text(batteryIcon, Symbols::batteryFull);

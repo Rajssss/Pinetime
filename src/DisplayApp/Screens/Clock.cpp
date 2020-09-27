@@ -190,10 +190,10 @@ bool Clock::Refresh() {
 
   // TODO stepCount = stepController.GetValue();
   if(stepCount.IsUpdated()) {
-    char stepBuffer[5];
-    sprintf(stepBuffer, "%lu", stepCount.Get());
-    //char stepBuffer[14];
-    //sprintf(stepBuffer, "#B3FF66 %lu#", stepCount.Get());
+    //char stepBuffer[5];
+    //sprintf(stepBuffer, "%lu", stepCount.Get());
+    char stepBuffer[14];
+    sprintf(stepBuffer, "#B3FF66 %lu#", stepCount.Get());
     lv_label_set_text(stepValue, stepBuffer);
     lv_obj_align(stepValue, lv_scr_act(), LV_ALIGN_IN_RIGHT_MID, -15, -15);
     lv_label_set_recolor(stepValue, true);
